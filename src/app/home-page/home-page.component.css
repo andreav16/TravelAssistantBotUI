@@ -1,0 +1,9 @@
+.recording-button {
+    background-color: green;
+    color: white;
+  }
+  
+  .stopped-button {
+    background-color: red;
+    color: white;
+  }
