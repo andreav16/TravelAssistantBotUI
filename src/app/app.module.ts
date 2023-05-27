@@ -6,13 +6,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
+import { VoiceChatButtonComponent } from './voice-chat-button/voice-chat-button.component';
+import { ChatBoxUserComponent } from './chat-box/chat-box-user.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
+    VoiceChatButtonComponent,
+    ChatBoxUserComponent,
     ],
   imports: [
     BrowserModule,

@@ -1,0 +1,7 @@
+<app-chat-box-user [userText]="transcribedText"></app-chat-box-user>
+<div class="container">
+<button class="button" (click)="toggleRecording()" [ngClass]="{'recording-button': isRecording, 'stopped-button': !isRecording}">
+  <i class="fa-solid fa-microphone fa-2xl"></i>
+</button>
+</div>
+
