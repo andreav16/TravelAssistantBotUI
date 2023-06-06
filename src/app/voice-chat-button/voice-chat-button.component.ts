@@ -12,12 +12,14 @@ export class VoiceChatButtonComponent {
 
   constructor(private ngZone: NgZone) {
     this.recognition = new (window as any).webkitSpeechRecognition();
-    this.recognition.lang = 'es-ES';
+    this.recognition.lang = 'en-US';
 
     this.recognition.onresult = (event: any) => {
       const transcript = event.results[0][0].transcript;
       this.ngZone.run(() => {
-        this.transcribedText = transcript;
+        if (this.isRecording) {
+          this.transcribedText += transcript;
+        }
       });
     };
 
@@ -35,6 +37,7 @@ export class VoiceChatButtonComponent {
     } else {
       this.recognition.start();
       this.isRecording = true;
+      this.transcribedText = ''; // Reinicia el texto transcrito al iniciar la grabación
     }
   }
 }

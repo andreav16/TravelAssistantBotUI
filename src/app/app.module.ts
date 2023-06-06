@@ -8,6 +8,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { VoiceChatButtonComponent } from './voice-chat-button/voice-chat-button.component';
 import { ChatBoxUserComponent } from './chat-box/chat-box-user.component';
+import { ChatBoxBotComponent } from './chat-box-bot/chat-box-bot.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ChatBoxUserComponent } from './chat-box/chat-box-user.component';
     HomePageComponent,
     VoiceChatButtonComponent,
     ChatBoxUserComponent,
+    ChatBoxBotComponent,
     ],
   imports: [
     BrowserModule,

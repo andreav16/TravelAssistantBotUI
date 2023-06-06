@@ -1,0 +1,14 @@
+.container{
+    display: flex;
+    justify-content: left;
+    font-family: 'Noto Sans Symbols', sans-serif; 
+  }
+
+.box{
+    border-style: solid;
+    padding: 10px 15px;
+    border-width: 2px;
+    border-color: #0046b8;
+    border-radius: 15px;
+    background-color: #00abfa67;
+  }

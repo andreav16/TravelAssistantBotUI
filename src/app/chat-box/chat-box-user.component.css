@@ -1,13 +1,14 @@
-.container{
-    display: flex;
-    justify-content: right;
-  }
+.container {
+  display: flex;
+  justify-content: right;
+  font-family: 'Noto Sans Symbols', sans-serif; 
+}
 
-.box{
-    border-style: solid;
-    padding: 10px 15px;
-    border-width: 2px;
-    border-color: #0046b8;
-    border-radius: 15px;
-    background-color: #c3d9fd63;
-  }
+.box {
+  border-style: solid;
+  padding: 10px 15px;
+  border-width: 2px;
+  border-color: #0046b8;
+  border-radius: 15px;
+  background-color: #c3d9fd63;
+}
