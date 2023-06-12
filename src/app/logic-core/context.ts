@@ -1,5 +1,5 @@
 import { Strategy } from "../interfaces/strategy";
-import { Entity } from "../models/entity";
+import { Entity } from "../models/InterpreterModels/entity";
 
 export class Context {
   private strategy!: Strategy;

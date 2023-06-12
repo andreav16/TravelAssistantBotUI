@@ -1,8 +1,9 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { InterpreterService } from '../services/interpreter.service';
-import { EventType } from '../models/eventType';
+import { EventType } from '../models/InterpreterModels/eventType';
 import { Context } from '../logic-core/context';
 import { AddEventStrategy } from '../logic-core/Calendar/addEventStrategy';
+import { ListEventsStrategy } from '../logic-core/Calendar/listEventsStrategy';
 
 @Component({
   selector: 'app-chat-box-user',
@@ -27,6 +28,8 @@ export class ChatBoxUserComponent implements OnChanges {
             this.received = data;
             if (this.received.action === 'ScheduleEvent') {
               context.setStrategy(new AddEventStrategy(this.interpreterService));             
+            }else if(this.received.action === 'ListEvents'){
+              context.setStrategy(new ListEventsStrategy(this.interpreterService));
             }
 
             //Execute strategy
