@@ -28,4 +28,9 @@ export class InterpreterService {
       `${environment.baseApiUrl}/events`
     );
   }
+
+  cancelEventsFromCalendar(eventName: string) {
+    return this.httpClient.delete(
+      `${environment.baseApiUrl}/events?eventName=${eventName}`);
+  }
 }

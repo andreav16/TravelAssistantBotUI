@@ -17,9 +17,9 @@ export class ListEventsStrategy implements Strategy {
             responseToBot +=
               'Activity: ' +
               event.summary +
-              '<br> Date info: ' +
+              '<br> Start datetime: ' +
               event.start.dateTime +
-              ' - ' +
+              ' - End datetime: ' +
               event.end.dateTime +
               '<br>';
           });

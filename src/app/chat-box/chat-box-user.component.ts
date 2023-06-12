@@ -4,6 +4,7 @@ import { EventType } from '../models/InterpreterModels/eventType';
 import { Context } from '../logic-core/context';
 import { AddEventStrategy } from '../logic-core/Calendar/addEventStrategy';
 import { ListEventsStrategy } from '../logic-core/Calendar/listEventsStrategy';
+import { CancelEventStrategy } from '../logic-core/Calendar/cancelEventStrategy';
 
 @Component({
   selector: 'app-chat-box-user',
@@ -30,6 +31,8 @@ export class ChatBoxUserComponent implements OnChanges {
               context.setStrategy(new AddEventStrategy(this.interpreterService));             
             }else if(this.received.action === 'ListEvents'){
               context.setStrategy(new ListEventsStrategy(this.interpreterService));
+            }else if(this.received.action === 'CancelEvents'){
+              context.setStrategy(new CancelEventStrategy(this.interpreterService));
             }
 
             //Execute strategy
@@ -38,7 +41,6 @@ export class ChatBoxUserComponent implements OnChanges {
               this.responseToBot = response;
             })
             .catch((error: any) => console.log(error));
-
           },
           error: (err) => console.log(err),
         });
