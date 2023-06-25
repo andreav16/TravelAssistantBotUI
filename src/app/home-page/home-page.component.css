@@ -3,6 +3,7 @@
   border-radius: 12px;
   border: 3px solid #206ec7;
   height: 100vh;
+  display: table;
 }
 
 #icon{
@@ -11,3 +12,4 @@
   justify-content: center;
   padding-top: 20px;
 }
+

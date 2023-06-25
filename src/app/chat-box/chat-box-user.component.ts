@@ -6,6 +6,7 @@ import { AddEventStrategy } from '../logic-core/Calendar/addEventStrategy';
 import { ListEventsStrategy } from '../logic-core/Calendar/listEventsStrategy';
 import { CancelEventStrategy } from '../logic-core/Calendar/cancelEventStrategy';
 import { LookUpPlacesStrategy } from '../logic-core/Places/LookPlacesStrategy';
+import { FlightStatusStrategy } from '../logic-core/Flights/FlightStatusStrategy';
 
 @Component({
   selector: 'app-chat-box-user',
@@ -44,6 +45,13 @@ export class ChatBoxUserComponent implements OnChanges {
               context.setStrategy(
                 new LookUpPlacesStrategy(this.interpreterService)
               );
+            }else if (this.received.action === 'FlightCodeStatus') {
+              context.setStrategy(
+                new FlightStatusStrategy(this.interpreterService)
+              );
+            }
+            else if (this.received.action === 'None') {
+              this.responseToBot = 'Sorry, I did not understand that';
             }
 
             //Execute strategy
@@ -52,9 +60,9 @@ export class ChatBoxUserComponent implements OnChanges {
               .then((response: string) => {
                 this.responseToBot = response;
               })
-              .catch((error: any) => console.log(error));
+              .catch((error: any) => this.responseToBot = 'Sorry, there is an error in your request');
           },
-          error: (err) => console.log(err),
+          error: (err) => this.responseToBot = err.error.message,
         });
       }
     }

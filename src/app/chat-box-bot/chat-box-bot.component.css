@@ -1,7 +1,6 @@
 .container{
     display: flex;
     justify-content: left;
-    font-family: 'Noto Sans Symbols', sans-serif; 
   }
 
 .box{

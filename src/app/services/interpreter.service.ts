@@ -6,6 +6,7 @@ import { EventType } from '../models/InterpreterModels/eventType';
 import { EventDetails } from '../models/CalendarModels/eventDetails';
 import { PlacesProperties } from '../models/PlacesModels/placesProperties';
 import { PlacesGroup } from '../models/PlacesModels/placesGroup';
+import { FlightDetailsInfo } from '../models/FlightsModels/flightDetailsInfo';
 
 @Injectable({
   providedIn: 'root',
@@ -43,5 +44,10 @@ export class InterpreterService {
 
   getPlaces(placeCategory: string, cityId: string, cantDatos:number): Observable<PlacesGroup[]> {
     return this.httpClient.get<PlacesGroup[]>(`${environment.baseApiUrl}/geopify/${placeCategory}/${cityId}/${cantDatos}`);
+  }
+
+  //Flights
+  getFlightInfo(flightNumber: string): Observable<FlightDetailsInfo> {
+    return this.httpClient.get<FlightDetailsInfo>(`${environment.baseApiUrl}/flights/${flightNumber}`);
   }
 }

@@ -55,7 +55,7 @@ export class LookUpPlacesStrategy implements Strategy {
       
       else {
         responseToBot +=
-          'Here are the ' +
+          'Here are ' +
           quantity +
           ' ' +
           placePrint +

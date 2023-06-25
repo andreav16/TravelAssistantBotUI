@@ -15,7 +15,7 @@ export class CancelEventStrategy implements Strategy {
             resolve(responseToBot);
           },
           error: (err) => {
-            responseToBot = 'Error: ' + err;
+            responseToBot = 'Error: en cancelar el evento';
             reject(err);
           },
         });
