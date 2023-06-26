@@ -1,15 +1,21 @@
 import { parse, format } from 'date-fns';
 import { enUS } from 'date-fns/locale';
 
-export function convertirFechaTexto(fechaTexto: string): string {
-  const fechaParseada = parse(fechaTexto, 'MMMM do', new Date(), {
-    locale: enUS,
-  });
-  const fechaFormateada = format(fechaParseada, 'yyyy-MM-dd');
-  return fechaFormateada;
+export function parseTextDatetoDatetime(fechaTexto: string): string {
+  if (fechaTexto === 'tomorrow') {
+    const today = new Date();
+    const tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+    return format(tomorrow, 'yyyy-MM-dd');
+  } else {
+    const fechaParseada = parse(fechaTexto, 'MMMM do', new Date(), {
+      locale: enUS,
+    });
+    const fechaFormateada = format(fechaParseada, 'yyyy-MM-dd');
+    return fechaFormateada;
+  }
 }
 
-export function convertirHoraAMPMa24(horaAMPM: string): string {
+export function parseTimeAMPMto24(horaAMPM: string): string {
   const match = horaAMPM.match(/^(\d+)(?::(\d+))?\s*([ap])\.m\.?$/i);
   if (!match) {
     throw new Error(`Formato de hora inválido: ${horaAMPM}`);

@@ -8,10 +8,10 @@ import {
 } from './LookPlacesUtils';
 import { PlacesGroup } from 'src/app/models/PlacesModels/placesGroup';
 import { PlacesProperties } from 'src/app/models/PlacesModels/placesProperties';
-import { parse } from 'date-fns';
+import { PlacesService } from 'src/app/services/places.service';
 
 export class LookUpPlacesStrategy implements Strategy {
-  constructor(private interpreterService: InterpreterService) {}
+  constructor(private placesService: PlacesService) {}
 
   execute(entities: Entity[]): Promise<string> {
     return new Promise((resolve, reject) => {
@@ -63,10 +63,10 @@ export class LookUpPlacesStrategy implements Strategy {
           cityName +
           ':<br><br>';
       }
-      this.interpreterService.getCityId(cityName).subscribe({
+      this.placesService.getCityId(cityName).subscribe({
         next: (data: string) => {
           cityId = data;
-          this.interpreterService.getPlaces(place, cityId, quantity).subscribe({
+          this.placesService.getPlaces(place, cityId, quantity).subscribe({
             next: (data: PlacesGroup[]) => {
               placesProperties = data[0].features.map((x) => x.properties);
               placesProperties.forEach((place: PlacesProperties) => {

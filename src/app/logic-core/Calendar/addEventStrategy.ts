@@ -1,10 +1,10 @@
 import { Entity } from 'src/app/models/InterpreterModels/entity';
-import { convertirFechaTexto, convertirHoraAMPMa24 } from './addEventUtils';
+import { parseTextDatetoDatetime, parseTimeAMPMto24 } from './addEventUtils';
 import { Strategy } from 'src/app/interfaces/strategy';
-import { InterpreterService } from 'src/app/services/interpreter.service';
+import { CalendarService } from 'src/app/services/calendar.service';
 
 export class AddEventStrategy implements Strategy {
-  constructor(private interpreterService: InterpreterService) {}
+  constructor(private calendarService: CalendarService) {}
 
   execute(entities: Entity[]): Promise<string> {
     return new Promise((resolve, reject) => {
@@ -19,10 +19,10 @@ export class AddEventStrategy implements Strategy {
           eventName = x.text;
         }
         if (x.category === 'StartDate') {
-          startDatetime = convertirFechaTexto(x.text);
+          startDatetime = parseTextDatetoDatetime(x.text);
         }
         if (x.category === 'EndDate') {
-          endDatetime = convertirFechaTexto(x.text);
+          endDatetime = parseTextDatetoDatetime(x.text);
           hasEndDate = true;
         }
       });
@@ -33,10 +33,10 @@ export class AddEventStrategy implements Strategy {
 
       entities.forEach((x) => {
         if (x.category === 'StartTime') {
-          startDatetime += 'T' + convertirHoraAMPMa24(x.text);
+          startDatetime += 'T' + parseTimeAMPMto24(x.text);
         }
         if (x.category === 'EndTime') {
-          endDatetime += 'T' + convertirHoraAMPMa24(x.text);
+          endDatetime += 'T' + parseTimeAMPMto24(x.text);
           hasEndTime = true;
         }
       });
@@ -52,14 +52,15 @@ export class AddEventStrategy implements Strategy {
         endDateTime: endDatetime,
       };
 
-      this.interpreterService.addEventToCalendar(body).subscribe({
+      this.calendarService.addEventToCalendar(body).subscribe({
         next: (response) => {
           responseToBot = '¡Event "' + eventName + '" scheduled!';
           resolve(responseToBot);
         },
         error: (err) => {
-          responseToBot = 'Error: ' + err;
-          reject(err);
+          const errorMessage =
+            'Error in adding the event: ' + err?.error?.error?.message;
+          reject(new Error(errorMessage));
         },
       });
     });
