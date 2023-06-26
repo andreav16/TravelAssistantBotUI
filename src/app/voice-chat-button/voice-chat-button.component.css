@@ -1,25 +1,24 @@
 .recording-button {
-    background-color: #679ff8;
-    color: white;
-    animation: blink 1s infinite;
-  }
-  
-  .stopped-button {
-    background-color: #0046b8;
-    color: white;
-  }
-.button{
+  background-color: #679ff8;
+  color: white;
+  animation: blink 1s infinite;
+}
+
+.stopped-button {
+  background-color: #0046b8;
+  color: white;
+}
+.button {
   width: 52px;
   height: 50px;
   border-radius: 80px;
   border-color: red;
-  
 }
-.container{
+.container {
   display: flex;
   justify-content: center;
   position: fixed;
-  bottom: 20px; 
+  bottom: 20px;
 }
 @keyframes blink {
   0% {

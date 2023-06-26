@@ -3,7 +3,7 @@ import { Component, NgZone } from '@angular/core';
 @Component({
   selector: 'app-voice-chat-button',
   templateUrl: './voice-chat-button.component.html',
-  styleUrls: ['./voice-chat-button.component.css']
+  styleUrls: ['./voice-chat-button.component.css'],
 })
 export class VoiceChatButtonComponent {
   transcribedText: string = '';
@@ -37,7 +37,7 @@ export class VoiceChatButtonComponent {
     } else {
       this.recognition.start();
       this.isRecording = true;
-      this.transcribedText = ''; // Reinicia el texto transcrito al iniciar la grabación
+      this.transcribedText = ''; 
     }
   }
 }

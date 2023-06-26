@@ -34,7 +34,6 @@ export class BookFlightStrategy implements Strategy {
           flightNumber = flightNumber.toUpperCase();
         }
       });
-      console.log('numero de vuelo' + flightNumber);
       this.flightService.getFlightInfo(flightNumber).subscribe({
         next: (data: FlightDetailsInfo) => {
           //Departure inforrmation
