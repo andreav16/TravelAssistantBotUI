@@ -1,4 +1,11 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { InterpreterService } from '../services/interpreter.service';
 import { EventType } from '../models/InterpreterModels/eventType';
 import { Context } from '../logic-core/context';
@@ -84,6 +91,8 @@ export class ChatBoxUserComponent implements OnChanges {
           error: (err) => (this.responseToBot = err.error.message),
         });
       }
+    } else {
+      this.responseToBot = '';
     }
   }
 

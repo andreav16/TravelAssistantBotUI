@@ -1,13 +1,13 @@
-.container{
-    display: flex;
-    justify-content: left;
-  }
+.container {
+  display: flex;
+  justify-content: left;
+}
 
-.box{
-    border-style: solid;
-    padding: 10px 15px;
-    border-width: 2px;
-    border-color: #0046b8;
-    border-radius: 15px;
-    background-color: #00abfa67;
-  }
+.box {
+  border-style: solid;
+  padding: 10px 15px;
+  border-width: 2px;
+  border-color: #0046b8;
+  border-radius: 15px;
+  background-color: #00abfa67;
+}
